@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Будинки: <%= street.name %></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-3">
+    <h2>Будинки: <%= street.name %></h2>
+    <table class="table table-bordered">
+        <tr><th>Номер</th><th>Опис</th></tr>
+        <% houses.forEach(house => { %>
+        <tr>
+            <td><%= house.number %></td>
+            <td><%= house.description %></td>
+        </tr>
+        <% }) %>
+    </table>
+    <a href="/">← До списку вулиць</a>
+</body>
+</html>

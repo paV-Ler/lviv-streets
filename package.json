@@ -1,0 +1,17 @@
+{
+  "name": "lviv-streets",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --no-deprecation app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Web-застосунок «Вулиці Львова»: Express, Ejs, NeDB",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "nedb": "^1.8.0"
+  }
+}
