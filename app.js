@@ -12,6 +12,10 @@ app.set('view engine', 'ejs')   // шаблони лежать у папці vie
 // сторінка 1: список вулиць
 app.get('/', (request, response) => {
     streets.find({}).sort({ name: 1 }).exec((err, list) => {
+        if (err) {
+            console.log(err)
+            return response.status(500).send('Помилка бази даних')
+        }
         response.render('streets', { streets: list })
     })
 })
@@ -19,10 +23,18 @@ app.get('/', (request, response) => {
 // сторінка 2: будинки на вибраній вулиці
 app.get('/street/:id', (request, response) => {
     streets.findOne({ _id: request.params.id }, (err, street) => {
+        if (err) {
+            console.log(err)
+            return response.status(500).send('Помилка бази даних')
+        }
         if (!street) {
             return response.status(404).send('Вулицю не знайдено')
         }
         houses.find({ streetId: street._id }).sort({ number: 1 }).exec((err, list) => {
+            if (err) {
+                console.log(err)
+                return response.status(500).send('Помилка бази даних')
+            }
             response.render('houses', { street: street, houses: list })
         })
     })
